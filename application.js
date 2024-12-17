@@ -8,82 +8,51 @@ const header=document.createElement("h1");
 header.innerText="Ажлын анкет";
 header.style.margin = "0px auto";
 form.appendChild(header);
+function creator(contId,texts,inputType,warnings){
+    const container=document.createElement("div");
+    container.id = contId;
+    container.style.width = "50%"
+    form.appendChild(container);
+    const InputName = document.createElement("p");
+    InputName.innerText = texts;
+    InputName.style.margin ="10px 0px 0px 0px"
+    const input = document.createElement("input");
+    input.type=inputType;
+    const warning = document.createElement("p");
+    warning.innerText = warnings
+    warning.style.color="red";
+    warning.style.margin = "10px 0px 0px 40px"
+    warning.style.visibility = "hidden";
+    
+    container.appendChild(InputName)
+    container.appendChild(input);
+    container.appendChild(warning);
+}
 
-const container=document.createElement("div");
-container.id = "firsname";
-container.style.width = "50%"
-form.appendChild(container);
-const firsname1 = document.createElement("p");
-firsname1.innerText = "Нэр:";
-firsname1.style.margin ="10px 0px 0px 0px"
-const firsnameInput = document.createElement("input");
-firsnameInput.type="text";
-let warning = document.createElement("p");
-warning.innerText = "1-ээс их урттай байна"
-warning.style.color="red";
-warning.style.margin = "10px 0px 0px 40px"
-warning.style.visibility = "hidden";
+const containerIdFirstname= "firsname";
+const firsnameText = "Нэр:";
+const firsnameInputType="text";
+const warningFirst = "1-ээс их урттай байна"
+creator(containerIdFirstname,firsnameText,firsnameInputType,warningFirst)
 
-container.appendChild(firsname1)
-container.appendChild(firsnameInput);
-container.appendChild(warning);
+const containerIdLastname= "lastname";
+const lastnameText = "Овог:";
+const lastnameInputType="text";
+const warningLast = "1-ээс их урттай байна"
+creator(containerIdLastname,lastnameText,lastnameInputType,warningLast)
 
-const containerLast=document.createElement("div");
-containerLast.id = "lastname";
-containerLast.style.width = "50%"
-form.appendChild(containerLast);
-const lastname1 = document.createElement("p");
-lastname1.innerText = "Овог:";
-lastname1.style.margin ="10px 0px 0px 0px"
-const lastnameInput = document.createElement("input");
-lastnameInput.type="text";
-warning = document.createElement("p");
-warning.innerText = "1-ээс их урттай байна"
-warning.style.color="red";
-warning.style.margin = "10px 0px 0px 40px"
-warning.style.visibility = "hidden";
+const containerIdAge= "age";
+const ageText = "Нас:";
+const ageInputType="number";
+const warningAge = "Насаа зөв оруулна уу!"
+creator(containerIdAge,ageText,ageInputType,warningAge)
 
-containerLast.appendChild(lastname1)
-containerLast.appendChild(lastnameInput);
-containerLast.appendChild(warning);
+const containerIdBirthday= "birthday";
+const birthdayText = "Төрсөн он сар:";
+const birthdayInputType="date";
+const warningBirthday = "Төрсөн он сараа зөв оруулна уу!"
+creator(containerIdBirthday,birthdayText,birthdayInputType,warningBirthday)
 
-const containerAge=document.createElement("div");
-containerAge.id = "age";
-containerAge.style.width = "50%"
-form.appendChild(containerAge);
-const age1 = document.createElement("p");
-age1.innerText = "Нас:";
-age1.style.margin ="10px 0px 0px 0px"
-const ageInput = document.createElement("input");
-ageInput.type="number";
-warning = document.createElement("p");
-warning.innerText = "Насаа зөв оруулна уу!"
-warning.style.color="red";
-warning.style.margin = "10px 0px 0px 40px"
-warning.style.visibility = "hidden";
-
-containerAge.appendChild(age1)
-containerAge.appendChild(ageInput);
-containerAge.appendChild(warning);
-
-const containerBirthday=document.createElement("div");
-containerBirthday.id = "birthday";
-containerBirthday.style.width = "50%"
-form.appendChild(containerBirthday);
-const birthday1 = document.createElement("p");
-birthday1.innerText = "Төрсөн он сар:";
-birthday1.style.margin ="10px 0px 0px 0px"
-const birthdayInput = document.createElement("input");
-birthdayInput.type="date";
-warning = document.createElement("p");
-warning.innerText = "Төрсөн он сараа зөв оруулна уу!"
-warning.style.color="red";
-warning.style.margin = "10px 0px 0px 40px"
-warning.style.visibility = "hidden";
-
-containerBirthday.appendChild(birthday1)
-containerBirthday.appendChild(birthdayInput);
-containerBirthday.appendChild(warning);
 
 const containerGender=document.createElement("div");
 containerGender.id = "gender";
@@ -143,32 +112,26 @@ warning.style.margin = "10px 0px 0px 40px"
 warning.style.visibility = "hidden";
 containerRelation.appendChild(warning);
 
-const containerUsername=document.createElement("div");
-containerUsername.id = "username";
-containerUsername.style.width = "50%"
-form.appendChild(containerUsername);
-const username1 = document.createElement("p");
-username1.innerText = "Хэрэглэгчийн нэр:";
-username1.style.margin ="10px 0px 0px 0px"
-const usernameInput = document.createElement("input");
-usernameInput.type="text";
-warning = document.createElement("p");
-warning.innerText = "Үсэг тоо ашигласан байна"
-warning.style.color="red";
-warning.style.margin = "10px 0px 0px 40px"
-warning.style.visibility = "hidden";
+const containerIdUsername= "username";
+const usernameText = "Хэрэглэгчийн нэр:";
+const usernameInputType="text";
+const warningUsername = "Үсэг тоо ашигласан байна"
+creator(containerIdUsername,usernameText,usernameInputType,warningUsername)
 
-const containerPassword=document.createElement("div");
-containerPassword.id = "password";
-containerPassword.style.width = "50%"
-form.appendChild(containerPassword);
-const password1 = document.createElement("p");
-password1.innerText = "Нууц үг:";
-password1.style.margin ="10px 0px 0px 0px"
-const passInput = document.createElement("password");
-passInput.type="password";
-warning = document.createElement("p");
-warning.innerText = "8-ээс их урттай байна"
-warning.style.color="red";
-warning.style.margin = "10px 0px 0px 40px"
-warning.style.visibility = "hidden";
+const containerIdPassword= "password";
+const passwordText = "Нууц үг:";
+const passwordInputType="password";
+const warningPassword = "Үсэг тоо ашигласан байна"
+creator(containerIdPassword,passwordText,passwordInputType,warningPassword)
+
+const button = document.createElement("button");
+button.innerText="submit";
+button.style.borderRadius = "5px"
+form.appendChild(button);
+
+function check(input,warning){
+    if(input.value.length>=2){
+        warning.style.visibility = "hidden"
+    }
+    else warning.style.visibility = "visible"
+}
