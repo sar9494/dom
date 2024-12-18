@@ -35,8 +35,8 @@ function creator(contId, texts, inputType, warnings) {
 }
 
 // Create form fields
-const firstname = creator("firstname", "Нэр:", "text", "1-ээс их урттай байна");
-const lastname = creator("lastname", "Овог:", "text", "1-ээс их урттай байна");
+const firstname = creator("firstname", "Нэр:", "text", "1-ээс их урттай тоо тэмдэгт агуулаагүй байна");
+const lastname = creator("lastname", "Овог:", "text", "1-ээс их урттай тоо тэмдэгт агуулаагүй байна");
 const age = creator("age", "Нас:", "number", "Насаа зөв оруулна уу!");
 const birthday = creator("birthday", "Төрсөн он сар:", "date", "Төрсөн он сараа зөв оруулна уу!");
 
@@ -54,14 +54,16 @@ const genders = ["male", "female", "others"];
 genders.forEach(gender => {
     const label = document.createElement("label");
     label.style.margin = "5px 10px";
-    const genderInput = document.createElement("input");
+    label.style.width = "50px";
+    label.innerText-gender
+    let genderInput = document.createElement("input");
     genderInput.type = "radio";
     genderInput.name = "gender";
     genderInput.value = gender;
     label.appendChild(genderInput);
-    label.innerText = gender;
-
+    label.appendChild(document.createTextNode(gender))
     containerGender.appendChild(label);
+
 });
 
 const genderWarning = document.createElement("p");
@@ -91,7 +93,7 @@ relationships.forEach(relation => {
     relationInput.name = "relation";
     relationInput.value = relation;
     label.appendChild(relationInput);
-    label.innerText = relation;
+    label.appendChild(document.createTextNode(relation));
     containerRelation.appendChild(label);
 });
 
@@ -118,8 +120,76 @@ button.addEventListener(("click"),function(event){
     check()
 })
 function check(){
-    if(firstname.input.length>=2){
+    let counter=0
+    const numcheck = /\d+/;
+    const specialChar=/^\S+.*\S+$/;
+    const charCheck = /[a-zA-Z]/
+    if(firstname.input.value.length>=2&&numcheck.test(firstname.input.value)==false&&specialChar.test(firstname.input.value)==false){
         firstname.warning.style.visibility = "hidden"
+        counter++
     }
-    else firstname.warning.style.visibility = "visible"
+    else {firstname.warning.style.visibility = "visible"
+
+    }
+    if(lastname.input.value.length>=2&&numcheck.test(lastname.input.value)==false&&specialChar.test(lastname.input.value)==false){
+        lastname.warning.style.visibility = "hidden"
+        counter++
+    }
+    else {lastname.warning.style.visibility = "visible"
+        
+    }
+    if(username.input.value.length>=2&&numcheck.test(username.input.value)==true&&specialChar.test(username.input.value)==false&&charCheck.test(username.input.value)==true){
+        username.warning.style.visibility = "hidden"
+        counter++
+    }
+    else {username.warning.style.visibility = "visible"
+        
+    }
+    if(password.input.value.length>=8){
+        password.warning.style.visibility = "hidden"
+        counter++
+    }
+    else {password.warning.style.visibility = "visible"
+        
+    }
+    if(age.input.value>=18&&age.input.value<90){
+        age.warning.style.visibility = "hidden"
+        counter++
+    }
+    else {age.warning.style.visibility = "visible"
+        
+    }
+    let birthYear=parseInt((birthday.input.value.toString().slice(0,4) ))
+    const d = new Date();
+    let year=d.getFullYear()
+    
+    if(birthYear==year-parseInt(age.input.value)){
+        birthday.warning.style.visibility = "hidden"
+        counter++
+    }
+    else {birthday.warning.style.visibility = "visible"
+        
+    }
+    
+    
+    const genderChecked = document.querySelector('input[name="gender"]:checked');
+    if (genderChecked) {
+        genderWarning.style.visibility = "hidden";
+        counter++
+    } else {
+        genderWarning.style.visibility = "visible";
+    }
+
+    // Relationship status validation
+    const relationChecked = document.querySelector('input[name="relation"]:checked');
+    if (relationChecked) {
+        relationWarning.style.visibility = "hidden";
+        counter++
+    } else {
+        relationWarning.style.visibility = "visible";
+    }
+    if(counter==8){
+        alert("Successfully")
+    }
+
 }
