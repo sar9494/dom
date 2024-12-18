@@ -145,7 +145,7 @@ function check(){
     else {username.warning.style.visibility = "visible"
         
     }
-    if(password.input.value.length>=8){
+    if(password.input.value.length>=8&&numcheck.test(username.input.value)==true&&specialChar.test(username.input.value)==true&&charCheck.test(username.input.value)==true){
         password.warning.style.visibility = "hidden"
         counter++
     }
