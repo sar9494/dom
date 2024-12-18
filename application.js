@@ -112,6 +112,8 @@ const password = creator("password", "Нууц үг:", "password", "Үсэг т�
 const button = document.createElement("button");
 button.innerText = "submit";
 button.style.borderRadius = "5px";
+button.style.backgroundColor="lightgreen"
+button.style.border="none"
 form.appendChild(button);
 
 button.addEventListener(("click"),function(event){
